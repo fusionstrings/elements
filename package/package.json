@@ -1,0 +1,22 @@
+{
+  "name": "@fusionstrings/dnt",
+  "module": "./esm/dom/main.js",
+  "exports": {
+    ".": {
+      "import": "./esm/dom/main.js"
+    }
+  },
+  "scripts": {
+    "test": "node test_runner.js"
+  },
+  "dependencies": {
+    "@preact/signals": "2.0.3",
+    "preact": "10.26.5",
+    "preact-render-to-string": "5.1.20"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "picocolors": "^1.0.0"
+  },
+  "_generatedBy": "dnt@dev"
+}

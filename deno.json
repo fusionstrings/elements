@@ -1,0 +1,30 @@
+{
+  "tasks": {
+    "dev": "deno serve --allow-read --watch main.tsx",
+    "build": "deno run -A functions/dnt.ts"
+  },
+  "imports": {
+    "@preact/signals": "npm:@preact/signals",
+    "preact": "npm:preact",
+    "preact-render-to-string": "npm:preact-render-to-string",
+    "@deno/dnt": "jsr:@deno/dnt",
+    "#template-button": "./templates/template-button.tsx",
+    "#template-button-off": "./templates/template-button-off.tsx",
+    "#button": "./components/button.tsx",
+    "#counter": "./components/counter.tsx",
+    "#dsd-button": "./components/dsd-button.tsx",
+    "#elements/dsd-button": "./elements/dsd-button.tsx"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "npm:preact",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "deno.ns"
+    ],
+    "strict": true
+  },
+  "lock": false
+}
