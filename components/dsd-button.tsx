@@ -1,10 +1,16 @@
 /** @jsxImportSource preact */
-import { TemplateButton } from "#template-button";
-function DSDButton() {
+import { Button } from "#button";
+function DSDButton(
+  { label }: {
+    label: string;
+  },
+) {
   return (
     <dsd-button>
-      <TemplateButton shadowrootmode="open" />
-      Count
+      <template shadowrootmode="open">
+        <Button />
+      </template>
+      {label}
     </dsd-button>
   );
 }

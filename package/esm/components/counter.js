@@ -1,9 +1,7 @@
-import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "preact/jsx-runtime";
+import { jsx as _jsx } from "preact/jsx-runtime";
 /** @jsxImportSource preact */
-import { signal } from "@preact/signals";
-import { Button } from "./button.js";
-const count = signal(0);
+import { count } from "../signals/counter.js";
 function Counter() {
-    return (_jsxs(_Fragment, { children: [_jsx("pre", { children: count }), _jsx(Button, { onClick: () => count.value++ })] }));
+    return (_jsx("div", { children: count }));
 }
 export { Counter };

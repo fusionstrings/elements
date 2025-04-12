@@ -1,31 +1,59 @@
 /** @jsxImportSource preact */
 import { renderToString } from "preact-render-to-string";
 import { Button } from "#button";
-import { DSDButton } from "#dsd-button";
 import { serveFile } from "jsr:@std/http/file-server";
 import browserImportMap from "./importmap.json" with { type: "json" };
+import { DSDButton } from "./components/dsd-button.tsx";
+import { count } from "#signals/counter";
+// import { TemplateButton } from "#template-button";
+
+const routes = [
+  {
+    pattern: new URLPattern({ pathname: "/_dnt.polyfills.js" }),
+    file: "package/esm/_dnt.polyfills.js",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/dom/main.js" }),
+    file: "package/esm/dom/main.js",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/signals/counter.js" }),
+    file: "package/esm/signals/counter.js",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/components/counter.js" }),
+    file: "package/esm/components/counter.js",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/templates/template-button.js" }),
+    file: "package/esm/templates/template-button.js",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/templates/button.css" }),
+    file: "templates/button.css",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/components/button.js" }),
+    file: "package/esm/components/button.js",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/elements/dsd-counter.js" }),
+    file: "package/esm/elements/dsd-counter.js",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/elements/dsd-button.js" }),
+    file: "package/esm/elements/dsd-button.js",
+  },
+];
+
 export default {
   fetch(request: Request) {
     const { pathname } = new URL(request.url);
 
-    if (pathname === "/dom/main.js") {
-      return serveFile(request, "package/esm/dom/main.js");
-    }
-
-    if (pathname === "/components/counter.js") {
-      return serveFile(request, "package/esm/components/counter.js");
-    }
-
-    if (pathname === "/templates/button.css") {
-      return serveFile(request, "templates/button.css");
-    }
-
-    if (pathname === "/components/button.js") {
-      return serveFile(request, "package/esm/components/button.js");
-    }
-
-    if (pathname === "/elements/dsd-button.js") {
-      return serveFile(request, "package/esm/elements/dsd-button.js");
+    for (const route of routes) {
+      if (route.pattern.test({ pathname })) {
+        return serveFile(request, route.file);
+      }
     }
 
     if (pathname === "/favicon.ico") {
@@ -54,18 +82,29 @@ export default {
               __html: JSON.stringify(browserImportMap, null, 2),
             }}
           />
+          {/* <TemplateButton id="template-button" /> */}
           <script type="module" src="/dom/main.js"></script>
         </head>
         <body>
           <main>
-            <h1>Declarative Shadow DOM</h1>
+            <h1>Declarative Shadow DOM study</h1>
+
             <section>
-              <h2>Button</h2>
-              <Button />
+              <h2>Button Element</h2>
+              <button type="button">Count</button>
             </section>
+
             <section>
-              <h2>Declarative Shadow DOM Button</h2>
-              <DSDButton />
+              <h2>Button Component</h2>
+              <template shadowrootmode="open">
+                <Button />
+              </template>
+            </section>
+
+            <section>
+              <h2>Button Component with Declarative Shadow DOM</h2>
+              <dsd-counter>{count}</dsd-counter>
+              <DSDButton label="Count" />
             </section>
           </main>
         </body>

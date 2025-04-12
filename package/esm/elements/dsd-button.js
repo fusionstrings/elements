@@ -1,7 +1,9 @@
 import { jsx as _jsx } from "preact/jsx-runtime";
 /** @jsxImportSource preact */
-import { render } from "preact";
-import { Counter } from "../components/counter.js";
+import { hydrate, render } from "preact";
+import { Button } from "../components/button.js";
+import { count } from "../signals/counter.js";
+//import { TemplateButton } from "#template-button";
 class DSDButton extends HTMLElement {
     constructor() {
         super();
@@ -17,15 +19,20 @@ class DSDButton extends HTMLElement {
             shadow = this.attachShadow({
                 mode: "open",
             });
-            const template = document.getElementById("template-button");
-            if (template) {
-                shadow.appendChild(template.content.cloneNode(true));
-            }
+            // const template = document.getElementById(
+            //   "template-button",
+            // ) as HTMLTemplateElement | null;
+            // if (template) {
+            //   shadow.appendChild(template.content.cloneNode(true));
+            // }
             // shadow.innerHTML = `<button><slot></slot></button>`;
+            render(_jsx(Button, { onClick: () => count.value++ }), shadow);
         }
-        // in either case, wire up our event listener:
-        //shadow.firstElementChild?.addEventListener("click", toggle);
-        render(_jsx(Counter, {}), shadow);
+        else {
+            // in either case, wire up our event listener:
+            //shadow.firstElementChild?.addEventListener("click", toggle);
+            hydrate(_jsx(Button, { onClick: () => count.value++ }), shadow);
+        }
     }
 }
 export { DSDButton };
