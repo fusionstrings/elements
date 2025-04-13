@@ -5,6 +5,7 @@ function TemplateButton(
 ) {
   return (
     <template shadowrootmode={shadowrootmode} id={id}>
+      <link rel="stylesheet" href="/templates/button.css" />
       <Button />
     </template>
   );

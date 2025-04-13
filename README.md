@@ -69,7 +69,7 @@ The project uses an import map for module resolution. Key mappings include:
     "preact-render-to-string": "npm:preact-render-to-string",
     "#button": "./components/button.tsx",
     "#counter": "./components/counter.tsx",
-    "#dsd-button": "./components/dsd-button.tsx"
+    "#components/dsd-button": "./components/dsd-button.tsx"
   }
 }
 ```

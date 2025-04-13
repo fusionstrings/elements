@@ -3,10 +3,11 @@ import { renderToString } from "preact-render-to-string";
 import { Button } from "#button";
 import { serveFile } from "jsr:@std/http/file-server";
 import browserImportMap from "./importmap.json" with { type: "json" };
-import { DSDButton } from "./components/dsd-button.tsx";
+import { DSDButton } from "#components/dsd-button";
 import { count } from "#signals/counter";
 import { TemplateButton } from "#template-button";
 import { TemplateCounter } from "#template-counter";
+import { DSDCounter } from "#components/dsd-counter";
 
 const routes = [
   {
@@ -36,6 +37,10 @@ const routes = [
   {
     pattern: new URLPattern({ pathname: "/components/button.js" }),
     file: "package/esm/components/button.js",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/templates/counter.css" }),
+    file: "templates/counter.css",
   },
   {
     pattern: new URLPattern({ pathname: "/elements/dsd-counter.js" }),
@@ -119,7 +124,7 @@ export default {
 
             <section>
               <h2>Button Component with Declarative Shadow DOM (Preact)</h2>
-              <dsd-counter-preact>{count}</dsd-counter-preact>
+              <DSDCounter />
               <DSDButton label="Count" />
             </section>
           </main>

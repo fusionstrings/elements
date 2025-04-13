@@ -17,10 +17,10 @@ class DSDCounter extends HTMLElement {
                 shadow.appendChild(template.content.cloneNode(true));
             }
         }
-        const counterElement = shadow.firstElementChild;
-        if (counterElement) {
+        const counterPlaceholder = shadow.querySelector("div");
+        if (counterPlaceholder) {
             effect(() => {
-                counterElement.textContent = `${count.value}`;
+                counterPlaceholder.textContent = `${count.value}`;
             });
         }
     }

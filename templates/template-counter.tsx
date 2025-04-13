@@ -5,6 +5,7 @@ function TemplateCounter(
 ) {
   return (
     <template shadowrootmode={shadowrootmode} id={id}>
+      <link rel="stylesheet" href="/templates/counter.css" />
       <Counter />
     </template>
   );

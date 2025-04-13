@@ -8,12 +8,9 @@ function Button(
   },
 ) {
   return (
-    <>
-      <link rel="stylesheet" href="/templates/button.css" />
-      <button type="button" onClick={onClick}>
-        <slot>{children}</slot>
-      </button>
-    </>
+    <button type="button" onClick={onClick}>
+      <slot>{children}</slot>
+    </button>
   );
 }
 
