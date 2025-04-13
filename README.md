@@ -17,8 +17,10 @@ This project demonstrates the use of Declarative Shadow DOM (DSD) with Preact, s
 ├── components/         # Reusable Preact components
 ├── dom/               # DOM-related scripts
 ├── elements/          # Custom elements with Declarative Shadow DOM
+├── elements.html      # HTML template for elements
 ├── functions/         # Build and bundling scripts
 ├── package/           # Packaged output for npm
+├── signals/           # Signal-related utilities
 ├── templates/         # HTML and CSS templates
 ├── main.tsx          # Entry point for the server
 ├── importmap.json    # Import map for module resolution
@@ -60,16 +62,4 @@ The output will be available in the package/ directory.
 The server serves the application and static files. Access the application at http://localhost:8000.
 
 ## Import Map
-The project uses an import map for module resolution. Key mappings include:
-```json
-{
-  "imports": {
-    "@preact/signals": "npm:@preact/signals",
-    "preact": "npm:preact",
-    "preact-render-to-string": "npm:preact-render-to-string",
-    "#button": "./components/button.tsx",
-    "#counter": "./components/counter.tsx",
-    "#components/dsd-button": "./components/dsd-button.tsx"
-  }
-}
-```
+The project uses an import map for module resolution.
