@@ -6,12 +6,12 @@ function DSDButton(
   },
 ) {
   return (
-    <dsd-button>
+    <dsd-button-preact>
       <template shadowrootmode="open">
         <Button />
       </template>
       {label}
-    </dsd-button>
+    </dsd-button-preact>
   );
 }
 

@@ -5,7 +5,8 @@ import { serveFile } from "jsr:@std/http/file-server";
 import browserImportMap from "./importmap.json" with { type: "json" };
 import { DSDButton } from "./components/dsd-button.tsx";
 import { count } from "#signals/counter";
-// import { TemplateButton } from "#template-button";
+import { TemplateButton } from "#template-button";
+import { TemplateCounter } from "#template-counter";
 
 const routes = [
   {
@@ -43,6 +44,14 @@ const routes = [
   {
     pattern: new URLPattern({ pathname: "/elements/dsd-button.js" }),
     file: "package/esm/elements/dsd-button.js",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/elements/dsd-counter-preact.js" }),
+    file: "package/esm/elements/dsd-counter-preact.js",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/elements/dsd-button-preact.js" }),
+    file: "package/esm/elements/dsd-button-preact.js",
   },
 ];
 
@@ -82,7 +91,8 @@ export default {
               __html: JSON.stringify(browserImportMap, null, 2),
             }}
           />
-          {/* <TemplateButton id="template-button" /> */}
+          <TemplateCounter id="template-counter" />
+          <TemplateButton id="template-button" />
           <script type="module" src="/dom/main.js"></script>
         </head>
         <body>
@@ -104,6 +114,12 @@ export default {
             <section>
               <h2>Button Component with Declarative Shadow DOM</h2>
               <dsd-counter>{count}</dsd-counter>
+              <dsd-button>Count</dsd-button>
+            </section>
+
+            <section>
+              <h2>Button Component with Declarative Shadow DOM (Preact)</h2>
+              <dsd-counter-preact>{count}</dsd-counter-preact>
               <DSDButton label="Count" />
             </section>
           </main>

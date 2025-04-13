@@ -1,17 +1,12 @@
-import { jsx as _jsx } from "preact/jsx-runtime";
-/** @jsxImportSource preact */
-import { hydrate, render } from "preact";
-import { Button } from "../components/button.js";
 import { count } from "../signals/counter.js";
-//import { TemplateButton } from "#template-button";
 class DSDButton extends HTMLElement {
     constructor() {
         super();
-        const supportsDeclarative = HTMLElement.prototype.hasOwnProperty("attachInternals");
+        const supportsDeclarative = Object.hasOwn(HTMLElement.prototype, "attachInternals");
         const internals = supportsDeclarative ? this.attachInternals() : undefined;
-        // const toggle = () => {
-        //   console.log("menu toggled!");
-        // };
+        const onClick = () => {
+            count.value++;
+        };
         // check for a Declarative Shadow Root.
         let shadow = internals?.shadowRoot;
         if (!shadow) {
@@ -19,19 +14,15 @@ class DSDButton extends HTMLElement {
             shadow = this.attachShadow({
                 mode: "open",
             });
-            // const template = document.getElementById(
-            //   "template-button",
-            // ) as HTMLTemplateElement | null;
-            // if (template) {
-            //   shadow.appendChild(template.content.cloneNode(true));
-            // }
-            // shadow.innerHTML = `<button><slot></slot></button>`;
-            render(_jsx(Button, { onClick: () => count.value++ }), shadow);
+            const template = document.getElementById("template-button");
+            if (template) {
+                shadow.appendChild(template.content.cloneNode(true));
+            }
         }
-        else {
-            // in either case, wire up our event listener:
-            //shadow.firstElementChild?.addEventListener("click", toggle);
-            hydrate(_jsx(Button, { onClick: () => count.value++ }), shadow);
+        // in either case, wire up our event listener:
+        const button = shadow.querySelector("button");
+        if (button) {
+            button.addEventListener("click", onClick);
         }
     }
 }

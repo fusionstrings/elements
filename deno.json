@@ -9,13 +9,15 @@
     "preact-render-to-string": "npm:preact-render-to-string",
     "@deno/dnt": "jsr:@deno/dnt",
     "#template-button": "./templates/template-button.tsx",
-    "#template-button-off": "./templates/template-button-off.tsx",
+    "#template-counter": "./templates/template-counter.tsx",
     "#counter": "./components/counter.tsx",
     "#button": "./components/button.tsx",
     "#signals/counter": "./signals/counter.ts",
     "#dsd-button": "./components/dsd-button.tsx",
-    "#elements/dsd-counter": "./elements/dsd-counter.tsx",
-    "#elements/dsd-button": "./elements/dsd-button.tsx"
+    "#elements/dsd-counter-preact": "./elements/dsd-counter-preact.tsx",
+    "#elements/dsd-button-preact": "./elements/dsd-button-preact.tsx",
+    "#elements/dsd-counter": "./elements/dsd-counter.ts",
+    "#elements/dsd-button": "./elements/dsd-button.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",

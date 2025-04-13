@@ -1,4 +1,3 @@
-/** @jsxImportSource preact */
 declare class DSDCounter extends HTMLElement {
     constructor();
 }

@@ -1,13 +1,14 @@
 /** @jsxImportSource preact */
 import { hydrate, render } from "preact";
-import { Button } from "../components/button.js";
-import { count } from "../signals/counter.js";
+import { Button } from "#button";
+import { count } from "#signals/counter";
 //import { TemplateButton } from "#template-button";
-class DSDButton extends HTMLElement {
+class DSDButtonPreact extends HTMLElement {
   constructor() {
     super();
 
-    const supportsDeclarative = HTMLElement.prototype.hasOwnProperty(
+    const supportsDeclarative = Object.hasOwn(
+      HTMLElement.prototype,
       "attachInternals",
     );
     const internals = supportsDeclarative ? this.attachInternals() : undefined;
@@ -42,4 +43,4 @@ class DSDButton extends HTMLElement {
   }
 }
 
-export { DSDButton };
+export { DSDButtonPreact };

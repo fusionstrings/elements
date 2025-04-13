@@ -1,1 +1,1 @@
-{"version":3,"file":"counter.d.ts","sourceRoot":"","sources":["../../src/signals/counter.ts"],"names":[],"mappings":"AACA,QAAA,MAAM,KAAK,+CAAY,CAAC;AAExB,OAAO,EAAE,KAAK,EAAE,CAAA"}
+{"version":3,"file":"counter.d.ts","sourceRoot":"","sources":["../../src/signals/counter.ts"],"names":[],"mappings":"AAEA,QAAA,MAAM,KAAK,+CAAY,CAAC;AAExB,OAAO,EAAE,KAAK,EAAE,CAAA"}

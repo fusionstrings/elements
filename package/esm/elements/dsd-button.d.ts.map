@@ -1,1 +1,1 @@
-{"version":3,"file":"dsd-button.d.ts","sourceRoot":"","sources":["../../src/elements/dsd-button.tsx"],"names":[],"mappings":"AAKA,cAAM,SAAU,SAAQ,WAAW;;CAqClC;AAED,OAAO,EAAE,SAAS,EAAE,CAAC"}
+{"version":3,"file":"dsd-button.d.ts","sourceRoot":"","sources":["../../src/elements/dsd-button.ts"],"names":[],"mappings":"AACA,cAAM,SAAU,SAAQ,WAAW;;CAuClC;AAED,OAAO,EAAE,SAAS,EAAE,CAAC"}

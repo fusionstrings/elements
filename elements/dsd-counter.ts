@@ -1,7 +1,6 @@
-/** @jsxImportSource preact */
+import { effect } from "@preact/signals";
+import { count } from "#signals/counter";
 
-import { hydrate, render } from "preact";
-import { Counter } from "../components/counter.js";
 class DSDCounter extends HTMLElement {
   constructor() {
     super();
@@ -21,9 +20,20 @@ class DSDCounter extends HTMLElement {
         mode: "open",
       });
 
-      render(<Counter />, shadow);
-    } else {
-      hydrate(<Counter />, shadow);
+      const template = document.getElementById(
+        "template-counter",
+      ) as HTMLTemplateElement | null;
+
+      if (template) {
+        shadow.appendChild(template.content.cloneNode(true));
+      }
+    }
+    const counterElement = shadow.firstElementChild;
+    if (counterElement) {
+      effect(() => {
+        counterElement.textContent = `${count.value}`;
+      });
+
     }
   }
 }
