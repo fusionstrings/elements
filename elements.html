@@ -7,10 +7,50 @@
     <title>Elements: Isomorphic Web Components with Declarative Shadow DOM</title>
     <script type="importmap">
         {
-            "#dom" : "./package/esm/dom/main.js"
+            "env": [
+                "browser",
+                "development",
+                "module"
+            ],
+            "imports": {
+                "@preact/signals": "https://cdn.jsdelivr.net/npm/@preact/signals@2.0.3/dist/signals.module.js",
+                "preact": "https://cdn.jsdelivr.net/npm/preact@10.26.5/dist/preact.module.js",
+                "preact/jsx-runtime": "https://cdn.jsdelivr.net/npm/preact@10.26.5/jsx-runtime/dist/jsxRuntime.module.js"
+            },
+            "scopes": {
+                "https://cdn.jsdelivr.net/": {
+                    "@preact/signals-core": "https://cdn.jsdelivr.net/npm/@preact/signals-core@1.8.0/dist/signals-core.module.js",
+                    "preact/hooks": "https://cdn.jsdelivr.net/npm/preact@10.26.5/hooks/dist/hooks.module.js"
+                }
+            }
         }
     </script>
-    <script type="module" src=""></script>
+
+    <template shadowrootmode="open" id="template-counter" shadowrootserializable="true">
+        <link rel="stylesheet" href="/templates/counter.css" />
+        <div>
+            {count}
+        </div>
+    </template>
+
+    <template shadowrootmode="open" id="template-button" shadowrootserializable="true">
+        <link rel="stylesheet" href="/templates/button.css" />
+        <button type="button">
+            <slot></slot>
+        </button>
+    </template>
+
+    <script type="module">
+        import { Counter } from "/elements/counter.js";
+        import { Button } from "/elements/button.js";
+
+        function main() {
+            customElements.define("element-counter", Counter);
+            customElements.define("element-button", Button);
+        }
+
+        document.addEventListener("DOMContentLoaded", main)
+    </script>
 </head>
 
 <body>
@@ -19,7 +59,7 @@
         <div>
             <h2>Button Component with Declarative Shadow DOM</h2>
             <section>
-                <element-counter>{count}</element-counter>
+                <element-counter>count</element-counter>
                 <element-button>Count</element-button>
             </section>
         </div>

@@ -11,6 +11,10 @@ import { DSDCounter } from "#components/dsd-counter";
 
 const routes = [
   {
+    pattern: new URLPattern({ pathname: "/elements" }),
+    file: "elements.html",
+  },
+  {
     pattern: new URLPattern({ pathname: "/_dnt.polyfills.js" }),
     file: "package/esm/_dnt.polyfills.js",
   },
@@ -101,6 +105,13 @@ export default {
           <script type="module" src="/dom/main.js"></script>
         </head>
         <body>
+          <header>
+            <nav>
+              <ul>
+                <li><a href="/elements">Elements</a></li>
+              </ul>
+            </nav>
+          </header>
           <main>
             <h1>Declarative Shadow DOM study</h1>
 
