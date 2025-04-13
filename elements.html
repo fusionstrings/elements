@@ -4,33 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elements</title>
-    <template id="template-button">
-        <link rel=" stylesheet" href="/templates/button.css" />
-        <button type="button">
-            <slot></slot>
-        </button>
-    </template>
+    <title>Elements: Isomorphic Web Components with Declarative Shadow DOM</title>
+    <script type="importmap">
+        {
+            "#dom" : "./package/esm/dom/main.js"
+        }
+    </script>
+    <script type="module" src=""></script>
 </head>
 
 <body>
-    <custom-button>
-        <span>Click Me!</span>
-    </custom-button>
-    <script>
-        class CustomButton extends HTMLElement {
-            constructor() {
-                super();
-                const template = document.getElementById('template-button');
-                const templateContent = template.content;
-
-                const shadowRoot = this.attachShadow({ mode: 'open' })
-                    .appendChild(templateContent.cloneNode(true));
-            }
-        }
-
-        customElements.define('custom-button', CustomButton);
-    </script>
+    <main>
+        <h1>Elements: Isomorphic Web Components with Declarative Shadow DOM</h1>
+        <div>
+            <h2>Button Component with Declarative Shadow DOM</h2>
+            <section>
+                <element-counter>{count}</element-counter>
+                <element-button>Count</element-button>
+            </section>
+        </div>
+        <footer>
+            <h2>References</h2>
+            <ul>
+                <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#attr-template-shadowrootmode">Declarative
+                        Shadow DOM Specs</a></li>
+                <li><a href="https://web.dev/articles/declarative-shadow-dom">Declarative Shadow DOM by Jason Miller and
+                        Mason Freed</a></li>
+                <li><a href="https://jakelazaroff.com/words/isomorphic-web-components/">Isomorphic Web Components by
+                        Jake Lazaroff</a></li>
+                <li><a href="https://github.com/mayank99/declarative-shadow-dom">Utility to get Declarative Shadow Dom
+                        work in JSX</a></li>
+                <li><a href="https://www.konnorrogers.com/posts/2023/what-is-declarative-shadow-dom">What is DSD</a>
+                </li>
+                <li><a href="https://12daysofweb.dev/2024/declarative-shadow-dom/">DSD</a></li>
+                <li><a href="https://fullystacked.net/declarative-shadow-dom/">Declarative Shadow DOM and issue in
+                        React</a></li>
+                <li><a href="https://blog.stackademic.com/server-rendering-web-components-in-react-869c248f1df7">Declarative
+                        Shadow DOM and issue in SSR</a></li>
+                <li><a href="https://fullystacked.net/innerhtml-alternatives/">Some useful modern browser APIs for Web
+                        components</a></li>
+                <li><a href="https://github.com/solidjs/solid/issues/1834">Solid JS DSD issue</a></li>
+            </ul>
+        </footer>
+    </main>
 </body>
 
 </html>
