@@ -1,7 +1,5 @@
-import { effect } from "@preact/signals";
 import { count } from "../signals/counter.js";
-
-class DSDCounter extends HTMLElement {
+class Button extends HTMLElement {
   constructor() {
     super();
 
@@ -11,6 +9,10 @@ class DSDCounter extends HTMLElement {
     );
     const internals = supportsDeclarative ? this.attachInternals() : undefined;
 
+    const onClick = () => {
+      count.value++;
+    };
+
     // check for a Declarative Shadow Root.
     let shadow = internals?.shadowRoot;
 
@@ -18,25 +20,25 @@ class DSDCounter extends HTMLElement {
       // there wasn't one. create a new Shadow Root:
       shadow = this.attachShadow({
         mode: "open",
+        serializable: true,
       });
 
       const template = document.getElementById(
-        "template-counter",
+        "template-button",
       ) as HTMLTemplateElement | null;
 
       if (template) {
         shadow.appendChild(template.content.cloneNode(true));
       }
     }
+    // in either case, wire up our event listener:
+    const button = shadow.querySelector("button");
 
-    const counterPlaceholder = shadow.querySelector("div");
-    if (counterPlaceholder) {
-      effect(() => {
-        counterPlaceholder.textContent = `${count.value}`;
-      });
-
+    if (button) {
+      button.addEventListener("click", onClick);
     }
+
   }
 }
 
-export { DSDCounter };
+export { Button };

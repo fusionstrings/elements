@@ -1,13 +1,14 @@
 import "../_dnt.polyfills.js";
-import { DSDCounterPreact } from "../elements/dsd-counter-preact.js";
-import { DSDButtonPreact } from "../elements/dsd-button-preact.js";
-import { DSDCounter } from "../elements/dsd-counter.js";
-import { DSDButton } from "../elements/dsd-button.js";
+import { CounterPreact } from "../elements/counter-preact.js";
+import { ButtonPreact } from "../elements/button-preact.js";
+import { Counter } from "../elements/counter.js";
+import { Button } from "../elements/button.js";
+
 function main() {
-    customElements.define("dsd-counter-preact", DSDCounterPreact);
-    customElements.define("dsd-button-preact", DSDButtonPreact);
-    customElements.define("dsd-counter", DSDCounter);
-    customElements.define("dsd-button", DSDButton);
+    customElements.define("dsd-counter-preact", CounterPreact);
+    customElements.define("dsd-button-preact", ButtonPreact);
+    customElements.define("element-counter", Counter);
+    customElements.define("element-button", Button);
 }
 
 document.addEventListener("DOMContentLoaded", main)

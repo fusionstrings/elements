@@ -1,38 +1,27 @@
-import { jsx as _jsx } from "preact/jsx-runtime";
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "preact/jsx-runtime";
 /** @jsxImportSource preact */
 import { hydrate, render } from "preact";
 import { Button } from "../components/button.js";
 import { count } from "../signals/counter.js";
-//import { TemplateButton } from "#template-button";
-class DSDButtonPreact extends HTMLElement {
+class ButtonPreact extends HTMLElement {
     constructor() {
         super();
         const supportsDeclarative = Object.hasOwn(HTMLElement.prototype, "attachInternals");
         const internals = supportsDeclarative ? this.attachInternals() : undefined;
-        // const toggle = () => {
-        //   console.log("menu toggled!");
-        // };
         // check for a Declarative Shadow Root.
         let shadow = internals?.shadowRoot;
         if (!shadow) {
             // there wasn't one. create a new Shadow Root:
             shadow = this.attachShadow({
                 mode: "open",
+                serializable: true,
             });
-            // const template = document.getElementById(
-            //   "template-button",
-            // ) as HTMLTemplateElement | null;
-            // if (template) {
-            //   shadow.appendChild(template.content.cloneNode(true));
-            // }
-            // shadow.innerHTML = `<button><slot></slot></button>`;
-            render(_jsx(Button, { onClick: () => count.value++ }), shadow);
+            render(_jsxs(_Fragment, { children: [_jsx("link", { rel: "stylesheet", href: "/templates/button.css" }), _jsx(Button, { onClick: () => count.value++ })] }), shadow);
         }
         else {
             // in either case, wire up our event listener:
-            //shadow.firstElementChild?.addEventListener("click", toggle);
             hydrate(_jsx(Button, { onClick: () => count.value++ }), shadow);
         }
     }
 }
-export { DSDButtonPreact };
+export { ButtonPreact };

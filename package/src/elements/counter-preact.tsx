@@ -2,7 +2,7 @@
 
 import { hydrate, render } from "preact";
 import { Counter } from "../components/counter.js";
-class DSDCounterPreact extends HTMLElement {
+class CounterPreact extends HTMLElement {
   constructor() {
     super();
 
@@ -19,13 +19,20 @@ class DSDCounterPreact extends HTMLElement {
       // there wasn't one. create a new Shadow Root:
       shadow = this.attachShadow({
         mode: "open",
+        serializable: true,
       });
 
-      render(<Counter />, shadow);
+      render(
+        <>
+          <link rel="stylesheet" href="/templates/counter.css" />
+          <Counter />
+        </>,
+        shadow,
+      );
     } else {
       hydrate(<Counter />, shadow);
     }
   }
 }
 
-export { DSDCounterPreact };
+export { CounterPreact };
