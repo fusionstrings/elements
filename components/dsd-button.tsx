@@ -7,7 +7,7 @@ function DSDButton(
 ) {
   return (
     <dsd-button-preact>
-      <TemplateButton shadowrootmode="open" />
+      <TemplateButton shadowrootmode="open" shadowrootserializable />
       {label}
     </dsd-button-preact>
   );

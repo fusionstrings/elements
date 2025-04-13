@@ -1,12 +1,13 @@
-import { DSDCounterPreact } from "#elements/dsd-counter-preact";
-import { DSDButtonPreact } from "#elements/dsd-button-preact";
-import { DSDCounter } from "#elements/dsd-counter";
-import { DSDButton } from "#elements/dsd-button";
+import { CounterPreact } from "#elements/counter-preact";
+import { ButtonPreact } from "#elements/button-preact";
+import { Counter } from "#elements/counter";
+import { Button } from "#elements/button";
+
 function main() {
-    customElements.define("dsd-counter-preact", DSDCounterPreact);
-    customElements.define("dsd-button-preact", DSDButtonPreact);
-    customElements.define("dsd-counter", DSDCounter);
-    customElements.define("dsd-button", DSDButton);
+    customElements.define("dsd-counter-preact", CounterPreact);
+    customElements.define("dsd-button-preact", ButtonPreact);
+    customElements.define("element-counter", Counter);
+    customElements.define("element-button", Button);
 }
 
 document.addEventListener("DOMContentLoaded", main)

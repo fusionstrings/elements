@@ -1,5 +1,5 @@
 import { count } from "#signals/counter";
-class DSDButton extends HTMLElement {
+class Button extends HTMLElement {
   constructor() {
     super();
 
@@ -20,6 +20,7 @@ class DSDButton extends HTMLElement {
       // there wasn't one. create a new Shadow Root:
       shadow = this.attachShadow({
         mode: "open",
+        serializable: true,
       });
 
       const template = document.getElementById(
@@ -40,4 +41,4 @@ class DSDButton extends HTMLElement {
   }
 }
 
-export { DSDButton };
+export { Button };

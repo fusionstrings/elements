@@ -43,20 +43,20 @@ const routes = [
     file: "templates/counter.css",
   },
   {
-    pattern: new URLPattern({ pathname: "/elements/dsd-counter.js" }),
-    file: "package/esm/elements/dsd-counter.js",
+    pattern: new URLPattern({ pathname: "/elements/counter.js" }),
+    file: "package/esm/elements/counter.js",
   },
   {
-    pattern: new URLPattern({ pathname: "/elements/dsd-button.js" }),
-    file: "package/esm/elements/dsd-button.js",
+    pattern: new URLPattern({ pathname: "/elements/button.js" }),
+    file: "package/esm/elements/button.js",
   },
   {
-    pattern: new URLPattern({ pathname: "/elements/dsd-counter-preact.js" }),
-    file: "package/esm/elements/dsd-counter-preact.js",
+    pattern: new URLPattern({ pathname: "/elements/counter-preact.js" }),
+    file: "package/esm/elements/counter-preact.js",
   },
   {
-    pattern: new URLPattern({ pathname: "/elements/dsd-button-preact.js" }),
-    file: "package/esm/elements/dsd-button-preact.js",
+    pattern: new URLPattern({ pathname: "/elements/button-preact.js" }),
+    file: "package/esm/elements/button-preact.js",
   },
 ];
 
@@ -117,9 +117,15 @@ export default {
             </section>
 
             <section>
-              <h2>Button Component with Declarative Shadow DOM</h2>
-              <dsd-counter>{count}</dsd-counter>
-              <dsd-button>Count</dsd-button>
+              <h2>Button Custom Element</h2>
+              <element-counter>{count}</element-counter>
+              <element-button>Count</element-button>
+            </section>
+
+            <section>
+              <h2>Button Custom Element (Preact)</h2>
+              <dsd-counter-preact>{count}</dsd-counter-preact>
+              <dsd-button-preact>Count</dsd-button-preact>
             </section>
 
             <section>

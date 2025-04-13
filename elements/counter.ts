@@ -1,7 +1,7 @@
 import { effect } from "@preact/signals";
 import { count } from "#signals/counter";
 
-class DSDCounter extends HTMLElement {
+class Counter extends HTMLElement {
   constructor() {
     super();
 
@@ -18,6 +18,7 @@ class DSDCounter extends HTMLElement {
       // there wasn't one. create a new Shadow Root:
       shadow = this.attachShadow({
         mode: "open",
+        serializable: true,
       });
 
       const template = document.getElementById(
@@ -39,4 +40,4 @@ class DSDCounter extends HTMLElement {
   }
 }
 
-export { DSDCounter };
+export { Counter };

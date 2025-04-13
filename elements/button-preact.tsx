@@ -2,8 +2,7 @@
 import { hydrate, render } from "preact";
 import { Button } from "#button";
 import { count } from "#signals/counter";
-//import { TemplateButton } from "#template-button";
-class DSDButtonPreact extends HTMLElement {
+class ButtonPreact extends HTMLElement {
   constructor() {
     super();
 
@@ -13,10 +12,6 @@ class DSDButtonPreact extends HTMLElement {
     );
     const internals = supportsDeclarative ? this.attachInternals() : undefined;
 
-    // const toggle = () => {
-    //   console.log("menu toggled!");
-    // };
-
     // check for a Declarative Shadow Root.
     let shadow = internals?.shadowRoot;
 
@@ -24,23 +19,21 @@ class DSDButtonPreact extends HTMLElement {
       // there wasn't one. create a new Shadow Root:
       shadow = this.attachShadow({
         mode: "open",
+        serializable: true,
       });
 
-      // const template = document.getElementById(
-      //   "template-button",
-      // ) as HTMLTemplateElement | null;
-
-      // if (template) {
-      //   shadow.appendChild(template.content.cloneNode(true));
-      // }
-      // shadow.innerHTML = `<button><slot></slot></button>`;
-      render(<Button onClick={() => count.value++} />, shadow);
+      render(
+        <>
+          <link rel="stylesheet" href="/templates/button.css" />
+          <Button onClick={() => count.value++} />
+        </>,
+        shadow,
+      );
     } else {
       // in either case, wire up our event listener:
-      //shadow.firstElementChild?.addEventListener("click", toggle);
       hydrate(<Button onClick={() => count.value++} />, shadow);
     }
   }
 }
 
-export { DSDButtonPreact };
+export { ButtonPreact };
