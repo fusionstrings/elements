@@ -23,13 +23,8 @@ await build({
     },
     package: {
         // package.json properties
-        name: '@fusionstrings/dnt',
+        name: '@fusionstrings/elements',
         version: Deno.args[0],
-        dependencies: {
-            "preact-render-to-string": "5.1.20",
-            preact: "10.26.5",
-            "@preact/signals": "2.0.3",
-        }
     },
     postBuild() {
         console.log('done');
