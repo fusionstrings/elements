@@ -1,5 +1,5 @@
 {
-  "name": "@fusionstrings/dnt",
+  "name": "@fusionstrings/elements",
   "module": "./esm/dom/main.js",
   "exports": {
     ".": {
@@ -10,9 +10,8 @@
     "test": "node test_runner.js"
   },
   "dependencies": {
-    "@preact/signals": "2.0.3",
-    "preact": "10.26.5",
-    "preact-render-to-string": "5.1.20"
+    "@preact/signals": "*",
+    "preact": "*"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",

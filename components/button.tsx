@@ -1,5 +1,6 @@
 /** @jsxImportSource preact */
 import type { JSX } from "preact";
+
 function Button(
   { onClick, children = "Click Me !" }: {
     onClick?: JSX.MouseEventHandler<HTMLButtonElement> | undefined;

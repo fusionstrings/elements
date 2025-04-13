@@ -4,16 +4,21 @@
     "build": "deno run -A functions/dnt.ts"
   },
   "imports": {
-    "@preact/signals": "npm:@preact/signals",
-    "preact": "npm:preact",
-    "preact-render-to-string": "npm:preact-render-to-string",
     "@deno/dnt": "jsr:@deno/dnt",
-    "#template-button": "./templates/template-button.tsx",
-    "#template-button-off": "./templates/template-button-off.tsx",
+    "@preact/signals": "npm:@preact/signals",
     "#button": "./components/button.tsx",
+    "#components/dsd-button": "./components/dsd-button.tsx",
+    "#components/dsd-counter": "./components/dsd-counter.tsx",
     "#counter": "./components/counter.tsx",
-    "#dsd-button": "./components/dsd-button.tsx",
-    "#elements/dsd-button": "./elements/dsd-button.tsx"
+    "#elements/button-preact": "./elements/button-preact.tsx",
+    "#elements/button": "./elements/button.ts",
+    "#elements/counter-preact": "./elements/counter-preact.tsx",
+    "#elements/counter": "./elements/counter.ts",
+    "#signals/counter": "./signals/counter.ts",
+    "#template-button": "./templates/template-button.tsx",
+    "#template-counter": "./templates/template-counter.tsx",
+    "preact-render-to-string": "npm:preact-render-to-string",
+    "preact": "npm:preact"
   },
   "compilerOptions": {
     "jsx": "react-jsx",

@@ -1,11 +1,15 @@
 /** @jsxImportSource preact */
 import { TemplateButton } from "#template-button";
-function DSDButton() {
+function DSDButton(
+  { label }: {
+    label: string;
+  },
+) {
   return (
-    <dsd-button>
-      <TemplateButton shadowrootmode="open" />
-      Count
-    </dsd-button>
+    <dsd-button-preact>
+      <TemplateButton shadowrootmode="open" shadowrootserializable />
+      {label}
+    </dsd-button-preact>
   );
 }
 
