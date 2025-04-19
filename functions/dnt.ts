@@ -15,7 +15,6 @@ await build({
     esModule: true,
     skipSourceOutput: false,
     importMap: 'deno.json',
-    typeCheck: false,
     compilerOptions: {
         lib: ['ESNext', 'DOM', 'DOM.Iterable'],
         target: 'Latest',

@@ -17,8 +17,11 @@
     "#signals/counter": "./signals/counter.ts",
     "#template-button": "./templates/template-button.tsx",
     "#template-counter": "./templates/template-counter.tsx",
+    "eszip": "https://deno.land/x/eszip@v0.84.0/mod.ts",
     "preact-render-to-string": "npm:preact-render-to-string",
-    "preact": "npm:preact"
+    "preact": "npm:preact",
+    "preact/": "npm:preact/",
+    "preact/jsx-runtime": "npm:preact/jsx-runtime"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
@@ -26,8 +29,10 @@
     "lib": [
       "dom",
       "dom.iterable",
+      "dom.asynciterable",
       "esnext",
-      "deno.ns"
+      "deno.ns",
+      "deno.unstable"
     ],
     "strict": true
   },
