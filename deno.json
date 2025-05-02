@@ -1,7 +1,13 @@
 {
+  "name": "@fusionstrings/elements",
+  "version": "0.1.0",
   "tasks": {
     "dev": "deno serve --allow-read --watch main.tsx",
-    "build": "deno run -A functions/dnt.ts"
+    "build": "deno run -A functions/dnt.ts",
+    "ssg": "deno run --allow-read --allow-write --allow-env --allow-net functions/ssg.ts"
+  },
+  "exports": {
+    ".": "./main.tsx"
   },
   "imports": {
     "@deno/dnt": "jsr:@deno/dnt",
@@ -14,6 +20,7 @@
     "#elements/button": "./elements/button.ts",
     "#elements/counter-preact": "./elements/counter-preact.tsx",
     "#elements/counter": "./elements/counter.ts",
+    "#home": "./components/home.tsx",
     "#signals/counter": "./signals/counter.ts",
     "#template-button": "./templates/template-button.tsx",
     "#template-counter": "./templates/template-counter.tsx",
