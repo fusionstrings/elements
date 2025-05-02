@@ -1,5 +1,6 @@
 import { build, emptyDir } from '@deno/dnt';
-
+import { ensureDir } from "jsr:@std/fs/ensure-dir";
+import { ssgHome } from './ssg.ts';
 const OUT_DIR = './package';
 
 await emptyDir(OUT_DIR);
@@ -25,10 +26,73 @@ await build({
         name: '@fusionstrings/elements',
         version: Deno.args[0],
     },
-    postBuild() {
-        console.log('done');
+    async postBuild() {
+        // const command = new Deno.Command(Deno.execPath(), {
+        //     args: [
+        //         "info",
+        //         "console.log('hello'); console.error('world')",
+        //     ],
+        // });
+        // const command = new Deno.Command('zsh', {
+        //     args: [
+        //         'ls',
+        //     ],
+        //     cwd: OUT_DIR,
+        // });
+        await ssgHome();
+        console.log('ssgHome done');
+
+        await ensureDir(`${OUT_DIR}/templates`);
+        Deno.copyFileSync("templates/button.css", `${OUT_DIR}/templates/button.css`);
+        Deno.copyFileSync("templates/counter.css", `${OUT_DIR}/templates/counter.css`);
+        // deno run -A npm:vite build
+        const command = new Deno.Command(Deno.execPath(), {
+            args: [
+                'run',
+                '-A',
+                // '--allow-read',
+                // '--allow-ffi',
+                // '--allow-env',
+                // '--allow-sys',
+                'npm:vite',
+                'build',
+            ],
+            cwd: OUT_DIR,
+        });
+        const { code, stdout, stderr } = await command.output();
+        console.log('code', code);
+        console.assert(code === 0);
+        console.log(new TextDecoder().decode(stdout));
+        console.log(new TextDecoder().decode(stderr));
+
+        console.log('Vite done');
+
+        const commandJSPM = new Deno.Command(Deno.execPath(), {
+            args: [
+                'run',
+                '-A',
+                // '--allow-read',
+                // '--allow-ffi',
+                // '--allow-env',
+                // '--allow-sys',
+                'npm:jspm',
+                'link',
+                '--map',
+                'index.html',
+                '--integrity',
+                '--preload'
+            ],
+            cwd: OUT_DIR,
+        });
+
+        const { code: codeJSPM, stdout: stdoutJSPM, stderr: stderrJSPM } = await commandJSPM.output();
+        console.log('code', codeJSPM);
+        console.assert(codeJSPM === 0);
+        console.log(new TextDecoder().decode(stdoutJSPM));
+        console.log(new TextDecoder().decode(stderrJSPM));
+
+        console.log('Vite done');
         // steps to run after building and before running the tests
-        // Deno.copyFileSync("LICENSE", "npm/LICENSE");
         // Deno.copyFileSync("README.md", "npm/README.md");
     },
 });
