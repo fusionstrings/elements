@@ -4,10 +4,9 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Debug Run Program",
             "type": "node",
             "program": "${workspaceFolder}/${relativeFile}",
             "cwd": "${workspaceFolder}",
@@ -15,6 +14,21 @@
             "runtimeExecutable": "/Users/fusionstrings/.deno/bin/deno",
             "runtimeArgs": [
                 "run",
+                "--inspect-wait",
+                "--allow-all"
+            ],
+            "attachSimplePort": 9229
+        },
+        {
+            "request": "launch",
+            "name": "Debug Serve Program",
+            "type": "node",
+            "program": "${workspaceFolder}/${relativeFile}",
+            "cwd": "${workspaceFolder}",
+            "env": {},
+            "runtimeExecutable": "/Users/fusionstrings/.deno/bin/deno",
+            "runtimeArgs": [
+                "serve",
                 "--inspect-wait",
                 "--allow-all"
             ],
