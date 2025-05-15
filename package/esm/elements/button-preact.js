@@ -4,24 +4,37 @@ import { hydrate, render } from "preact";
 import { Button } from "../components/button.js";
 import { count } from "../signals/counter.js";
 class ButtonPreact extends HTMLElement {
+    static observedAttributes = []; // Add attribute names if needed
+    shadow = null;
+    internals;
     constructor() {
         super();
-        const supportsDeclarative = Object.hasOwn(HTMLElement.prototype, "attachInternals");
-        const internals = supportsDeclarative ? this.attachInternals() : undefined;
-        // check for a Declarative Shadow Root.
-        let shadow = internals?.shadowRoot;
-        if (!shadow) {
-            // there wasn't one. create a new Shadow Root:
-            shadow = this.attachShadow({
-                mode: "open",
-                serializable: true,
-            });
-            render(_jsxs(_Fragment, { children: [_jsx("link", { rel: "stylesheet", href: "/templates/button.css" }), _jsx(Button, { onClick: () => count.value++ })] }), shadow);
+        if ("attachInternals" in this) {
+            this.internals = this.attachInternals();
+        }
+    }
+    handleClick() {
+        count.value++;
+    }
+    connectedCallback() {
+        this.shadow = this.internals?.shadowRoot || this.shadowRoot;
+        if (!this.shadow) {
+            this.shadow = this.attachShadow({ mode: "open", serializable: true });
+            render(_jsxs(_Fragment, { children: [_jsx("link", { rel: "stylesheet", href: "/templates/button.css" }), _jsx(Button, { onClick: this.handleClick })] }), this.shadow);
         }
         else {
-            // in either case, wire up our event listener:
-            hydrate(_jsx(Button, { onClick: () => count.value++ }), shadow);
+            hydrate(_jsx(Button, { onClick: this.handleClick }), this.shadow);
         }
+    }
+    disconnectedCallback() {
+        if (this.shadow) {
+            render(null, this.shadow);
+        }
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+        console.log(name);
+        console.log(oldValue);
+        console.log(newValue);
     }
 }
 export { ButtonPreact };

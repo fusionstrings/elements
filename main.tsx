@@ -20,19 +20,19 @@ const routes = [
     file: "elements.html",
   },
   {
-    pattern: new URLPattern({ pathname: "/_dnt.polyfills.js" }),
+    pattern: new URLPattern({ pathname: "/esm/_dnt.polyfills.js" }),
     file: "package/esm/_dnt.polyfills.js",
   },
   {
-    pattern: new URLPattern({ pathname: "/dom/main.js" }),
+    pattern: new URLPattern({ pathname: "/esm/dom/main.js" }),
     file: "package/esm/dom/main.js",
   },
   {
-    pattern: new URLPattern({ pathname: "/signals/counter.js" }),
+    pattern: new URLPattern({ pathname: "/esm/signals/counter.js" }),
     file: "package/esm/signals/counter.js",
   },
   {
-    pattern: new URLPattern({ pathname: "/components/counter.js" }),
+    pattern: new URLPattern({ pathname: "/esm/components/counter.js" }),
     file: "package/esm/components/counter.js",
   },
   {
@@ -44,7 +44,7 @@ const routes = [
     file: "templates/button.css",
   },
   {
-    pattern: new URLPattern({ pathname: "/components/button.js" }),
+    pattern: new URLPattern({ pathname: "/esm/components/button.js" }),
     file: "package/esm/components/button.js",
   },
   {
@@ -52,19 +52,19 @@ const routes = [
     file: "templates/counter.css",
   },
   {
-    pattern: new URLPattern({ pathname: "/elements/counter.js" }),
+    pattern: new URLPattern({ pathname: "/esm/elements/counter.js" }),
     file: "package/esm/elements/counter.js",
   },
   {
-    pattern: new URLPattern({ pathname: "/elements/button.js" }),
+    pattern: new URLPattern({ pathname: "/esm/elements/button.js" }),
     file: "package/esm/elements/button.js",
   },
   {
-    pattern: new URLPattern({ pathname: "/elements/counter-preact.js" }),
+    pattern: new URLPattern({ pathname: "/esm/elements/counter-preact.js" }),
     file: "package/esm/elements/counter-preact.js",
   },
   {
-    pattern: new URLPattern({ pathname: "/elements/button-preact.js" }),
+    pattern: new URLPattern({ pathname: "/esm/elements/button-preact.js" }),
     file: "package/esm/elements/button-preact.js",
   },
 ];
