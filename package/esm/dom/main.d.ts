@@ -1,2 +1,2 @@
-import "../_dnt.polyfills.js";
+export {};
 //# sourceMappingURL=main.d.ts.map

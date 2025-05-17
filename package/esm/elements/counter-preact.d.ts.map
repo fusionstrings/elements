@@ -1,1 +1,1 @@
-{"version":3,"file":"counter-preact.d.ts","sourceRoot":"","sources":["../../src/elements/counter-preact.tsx"],"names":[],"mappings":"AAAA,8BAA8B;AAI9B,cAAM,aAAc,SAAQ,WAAW;;CA+BtC;AAED,OAAO,EAAE,aAAa,EAAE,CAAC"}
+{"version":3,"file":"counter-preact.d.ts","sourceRoot":"","sources":["../../src/elements/counter-preact.tsx"],"names":[],"mappings":"AAAA,8BAA8B;AAK9B,cAAM,aAAc,SAAQ,WAAW;IAErC,OAAO,CAAC,MAAM,CAA2B;IACzC,OAAO,CAAC,SAAS,CAAC,CAAmB;;IASrC,iBAAiB;IAgBjB,oBAAoB;CAKrB;AAED,OAAO,EAAE,aAAa,EAAE,CAAC"}

@@ -1,4 +1,3 @@
-import "../_dnt.polyfills.js";
 import { CounterPreact } from "../elements/counter-preact.js";
 import { ButtonPreact } from "../elements/button-preact.js";
 import { Counter } from "../elements/counter.js";

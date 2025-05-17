@@ -1,28 +1,37 @@
 import { effect } from "@preact/signals";
 import { count } from "../signals/counter.js";
 class Counter extends HTMLElement {
+    shadow = null;
+    internals;
+    counterPlaceholder = null;
+    disposeEffect;
     constructor() {
         super();
-        const supportsDeclarative = Object.hasOwn(HTMLElement.prototype, "attachInternals");
-        const internals = supportsDeclarative ? this.attachInternals() : undefined;
-        // check for a Declarative Shadow Root.
-        let shadow = internals?.shadowRoot;
-        if (!shadow) {
-            // there wasn't one. create a new Shadow Root:
-            shadow = this.attachShadow({
-                mode: "open",
-                serializable: true,
-            });
+        if ("attachInternals" in this) {
+            this.internals = this.attachInternals();
+        }
+    }
+    connectedCallback() {
+        this.shadow = this.internals?.shadowRoot || this.shadowRoot;
+        if (!this.shadow) {
+            this.shadow = this.attachShadow({ mode: "open", serializable: true });
             const template = document.getElementById("template-counter");
             if (template) {
-                shadow.appendChild(template.content.cloneNode(true));
+                this.shadow.appendChild(template.content.cloneNode(true));
             }
         }
-        const counterPlaceholder = shadow.querySelector("div");
-        if (counterPlaceholder) {
-            effect(() => {
-                counterPlaceholder.textContent = `${count.value}`;
+        this.counterPlaceholder = this.shadow?.querySelector("div");
+        if (this.counterPlaceholder) {
+            // Store disposer to clean up effect on disconnect
+            this.disposeEffect = effect(() => {
+                this.counterPlaceholder.textContent = `${count.value}`;
             });
+        }
+    }
+    disconnectedCallback() {
+        if (this.disposeEffect) {
+            this.disposeEffect();
+            this.disposeEffect = undefined;
         }
     }
 }

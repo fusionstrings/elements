@@ -2,35 +2,38 @@
 
 import { hydrate, render } from "preact";
 import { Counter } from "../components/counter.js";
+
 class CounterPreact extends HTMLElement {
+
+  private shadow: ShadowRoot | null = null;
+  private internals?: ElementInternals;
+
   constructor() {
     super();
+    if ("attachInternals" in this) {
+      this.internals = this.attachInternals();
+    }
+  }
 
-    const supportsDeclarative = Object.hasOwn(
-      HTMLElement.prototype,
-      "attachInternals",
-    );
-    const internals = supportsDeclarative ? this.attachInternals() : undefined;
-
-    // check for a Declarative Shadow Root.
-    let shadow = internals?.shadowRoot;
-
-    if (!shadow) {
-      // there wasn't one. create a new Shadow Root:
-      shadow = this.attachShadow({
-        mode: "open",
-        serializable: true,
-      });
-
+  connectedCallback() {
+    this.shadow = this.internals?.shadowRoot || this.shadowRoot;
+    if (!this.shadow) {
+      this.shadow = this.attachShadow({ mode: "open", serializable: true });
       render(
         <>
           <link rel="stylesheet" href="/templates/counter.css" />
           <Counter />
         </>,
-        shadow,
+        this.shadow,
       );
     } else {
-      hydrate(<Counter />, shadow);
+      hydrate(<Counter />, this.shadow);
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.shadow) {
+      render(null, this.shadow);
     }
   }
 }

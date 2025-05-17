@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "tasks": {
     "dev": "deno serve --allow-read --watch main.tsx",
+    "serve": "deno serve --allow-read main.tsx",
     "build": "deno run -A functions/dnt.ts",
     "ssg": "deno run --allow-read --allow-write --allow-env --allow-net functions/ssg.ts"
   },

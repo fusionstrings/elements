@@ -1,8 +1,8 @@
 {
   "env": [
     "browser",
-    "development",
-    "module"
+    "module",
+    "production"
   ],
   "imports": {
     "@preact/signals": "https://cdn.jsdelivr.net/npm/@preact/signals@2.0.3/dist/signals.module.js",

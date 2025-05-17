@@ -1,4 +1,3 @@
-
 import browserImportMap from "../importmap.json" with { type: "json" };
 import { TemplateCounter } from "#template-counter";
 import { TemplateButton } from "#template-button";
