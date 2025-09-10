@@ -1,21 +1,25 @@
 {
   "name": "@fusionstrings/elements",
-  "module": "./esm/dom/main.js",
+  "module": "./esm/main.js",
   "exports": {
     ".": {
+      "import": "./esm/main.js"
+    },
+    "./dom/main": {
       "import": "./esm/dom/main.js"
     }
   },
-  "scripts": {
-    "test": "node test_runner.js"
-  },
+  "scripts": {},
+  "type": "module",
   "dependencies": {
     "@preact/signals": "*",
-    "preact": "*"
+    "preact": "*",
+    "preact-custom-element": "*",
+    "preact-render-to-string": "*",
+    "@deno/shim-deno": "~0.18.0"
   },
   "devDependencies": {
-    "@types/node": "^20.9.0",
-    "picocolors": "^1.0.0"
+    "@types/node": "^20.9.0"
   },
   "_generatedBy": "dnt@dev"
 }

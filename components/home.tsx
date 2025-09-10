@@ -1,3 +1,4 @@
+/** @jsxImportSource preact */
 import browserImportMap from "../importmap.json" with { type: "json" };
 import { TemplateCounter } from "#template-counter";
 import { TemplateButton } from "#template-button";
@@ -67,6 +68,12 @@ function Home() {
                         <h2>Button Component with Declarative Shadow DOM (Preact)</h2>
                         <DSDCounter />
                         <DSDButton label="Count" />
+                    </section>
+
+                    <section>
+                        <h2>Preact register</h2>
+                        <element-counter2>{count}</element-counter2>
+                        <element-button2>Count</element-button2>
                     </section>
                 </main>
             </body>

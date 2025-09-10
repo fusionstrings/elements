@@ -6,13 +6,15 @@ const OUT_DIR = './package';
 await emptyDir(OUT_DIR);
 
 await build({
-    entryPoints: ['dom/main.ts'],
+    entryPoints: ['main.tsx', { name: "./dom/main", path: "./dom/main.ts" }],
     outDir: OUT_DIR,
     shims: {
         // see JS docs for overview and more options
         deno: true,
     },
     scriptModule: false,
+    typeCheck: false,
+    test: false,
     esModule: true,
     skipSourceOutput: false,
     importMap: 'deno.json',
@@ -25,6 +27,7 @@ await build({
         // package.json properties
         name: '@fusionstrings/elements',
         version: Deno.args[0],
+        type: 'module',
     },
     async postBuild() {
         // const command = new Deno.Command(Deno.execPath(), {
@@ -39,12 +42,15 @@ await build({
         //     ],
         //     cwd: OUT_DIR,
         // });
+        //await Deno.rename(`${OUT_DIR}/test_runner.js`, `${OUT_DIR}/test-runner.cjs`);
         await ssgHome();
         console.log('ssgHome done');
 
         await ensureDir(`${OUT_DIR}/templates`);
         Deno.copyFileSync("templates/button.css", `${OUT_DIR}/templates/button.css`);
         Deno.copyFileSync("templates/counter.css", `${OUT_DIR}/templates/counter.css`);
+        const { config } = await import('#wrangler-config');
+        await Deno.writeTextFile(`${OUT_DIR}/wrangler.jsonc`, JSON.stringify(config, null, 2));
         // deno run -A npm:vite build
         const command = new Deno.Command(Deno.execPath(), {
             args: [
@@ -91,7 +97,8 @@ await build({
         console.log(new TextDecoder().decode(stdoutJSPM));
         console.log(new TextDecoder().decode(stderrJSPM));
 
-        console.log('Vite done');
+        console.log('JSPM done');
+
         // steps to run after building and before running the tests
         // Deno.copyFileSync("README.md", "npm/README.md");
     },
