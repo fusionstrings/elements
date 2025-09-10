@@ -2,8 +2,8 @@
 import { count } from "#signals/counter";
 function Counter2({emoji = "⚛️"}: {emoji?: string}) {
   return (
-    <div>
-      Counter: {count} {emoji}
+    <div class="counter">
+     <span>Counter: {count}</span> <span class="emoji">{emoji}</span>
     </div>
   );
 }

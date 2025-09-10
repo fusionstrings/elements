@@ -34,6 +34,10 @@ const routes = [
     file: "package/esm/signals/counter.js",
   },
   {
+    pattern: new URLPattern({ pathname: "/esm/components/button2.js" }),
+    file: "package/esm/components/button2.js",
+  },
+  {
     pattern: new URLPattern({ pathname: "/esm/components/counter.js" }),
     file: "package/esm/components/counter.js",
   },
@@ -42,8 +46,8 @@ const routes = [
     file: "package/esm/components/counter2.js",
   },
   {
-    pattern: new URLPattern({ pathname: "/esm/components/counter.css" }),
-    file: "package/esm/components/counter.css",
+    pattern: new URLPattern({ pathname: "/esm/dom/counter2.css" }),
+    file: "package/esm/dom/counter2.css",
   },
   {
     pattern: new URLPattern({ pathname: "/templates/template-button.js" }),

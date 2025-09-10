@@ -1,4 +1,4 @@
-element-counter2 {
+.emoji {
   display: block;
   font-family: system-ui, sans-serif;
   border: 2px solid #ccc;
@@ -6,5 +6,13 @@ element-counter2 {
   padding: 16px;
   margin: 16px 0;
   text-align: center;
-  background-color: #f9f9f9;
+  background-color: #9f2ea4;
+}
+.counter {
+  color: purple;
+}
+
+div {
+  padding: 16px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
