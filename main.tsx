@@ -1,102 +1,44 @@
 /** @jsxImportSource preact */
-import { renderToStringAsync } from "preact-render-to-string";
-import { serveFile } from "jsr:@std/http/file-server";
+import { renderToReadableStream } from "preact-render-to-string/stream";
+import { serveFile } from "@std/http/file-server";
 import { Home } from "#home";
-
-declare module 'preact/jsx-runtime' {
-  namespace JSX {
-    interface IntrinsicElements {
-      'element-counter': HTMLAttributes<HTMLElement>;
-      'element-button': HTMLAttributes<HTMLElement>;
-      'dsd-counter-preact': HTMLAttributes<HTMLElement>;
-      'dsd-button-preact': HTMLAttributes<HTMLElement>;
-      'element-button2': HTMLAttributes<HTMLElement> & { hydrate?: boolean };
-      'element-counter2': HTMLAttributes<HTMLElement>;
-    }
-  }
-}
 
 const routes = [
   {
-    pattern: new URLPattern({ pathname: "/elements" }),
-    file: "elements.html",
+    pattern: new URLPattern({ pathname: "/favicon.ico" }),
+    file: "images/favicon/favicon.ico",
   },
   {
-    pattern: new URLPattern({ pathname: "/esm/_dnt.polyfills.js" }),
-    file: "package/esm/_dnt.polyfills.js",
+    pattern: new URLPattern({ pathname: "/favicon.svg" }),
+    file: "images/favicon/favicon.svg",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/favicon-96x96.png" }),
+    file: "images/favicon/favicon-96x96.png",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/site.webmanifest" }),
+    file: "images/favicon/site.webmanifest",
   },
   {
     pattern: new URLPattern({ pathname: "/esm/dom/main.js" }),
     file: "package/esm/dom/main.js",
   },
-  {
-    pattern: new URLPattern({ pathname: "/esm/signals/counter.js" }),
-    file: "package/esm/signals/counter.js",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/esm/components/button2.js" }),
-    file: "package/esm/components/button2.js",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/esm/components/counter.js" }),
-    file: "package/esm/components/counter.js",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/esm/components/counter2.js" }),
-    file: "package/esm/components/counter2.js",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/esm/dom/button2.css" }),
-    file: "package/esm/dom/button2.css",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/esm/dom/counter2.css" }),
-    file: "package/esm/dom/counter2.css",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/templates/template-button.js" }),
-    file: "package/esm/templates/template-button.js",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/templates/button.css" }),
-    file: "templates/button.css",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/esm/components/button.js" }),
-    file: "package/esm/components/button.js",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/templates/counter.css" }),
-    file: "templates/counter.css",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/esm/elements/counter.js" }),
-    file: "package/esm/elements/counter.js",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/esm/elements/button.js" }),
-    file: "package/esm/elements/button.js",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/esm/elements/counter-preact.js" }),
-    file: "package/esm/elements/counter-preact.js",
-  },
-  {
-    pattern: new URLPattern({ pathname: "/esm/elements/button-preact.js" }),
-    file: "package/esm/elements/button-preact.js",
-  },
 ];
 
-async function documentHome() {
-  const html = await renderToStringAsync(
-      <Home />
-    );
-
-    return `<!DOCTYPE html>${html}`;
+function documentHome(): ReadableStream<Uint8Array> {
+  const stream = renderToReadableStream(<Home />);
+  const encoder = new TextEncoder();
+  
+  return stream.pipeThrough(new TransformStream({
+    start(controller) {
+      controller.enqueue(encoder.encode("<!DOCTYPE html>"));
+    }
+  }));
 }
 
 export default {
-  async fetch(request: Request) {
+  fetch(request: Request) {
     const { pathname } = new URL(request.url);
 
     for (const route of routes) {
@@ -105,26 +47,12 @@ export default {
       }
     }
 
-    if (pathname === "/favicon.ico") {
-      return new Response(
-        "Favicon not found",
-        {
-          status: 404,
-          headers: {
-            "content-type": "text/plain;charset=UTF-8",
-          },
-        },
-      );
-    }
-    const document = await documentHome();
-    return new Response(
-      document,
-      {
-        headers: {
-          "content-type": "text/html;charset=UTF-8",
-        },
+    const stream = documentHome();
+    return new Response(stream, {
+      headers: {
+        "content-type": "text/html;charset=UTF-8",
       },
-    );
+    });
   },
 };
 

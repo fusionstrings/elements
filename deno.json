@@ -13,6 +13,7 @@
   "imports": {
     "@deno/dnt": "jsr:@deno/dnt",
     "@preact/signals": "npm:@preact/signals",
+    "lol-html": "npm:lol-html",
     "#button": "./components/button.tsx",
     "#components/button2": "./components/button2.tsx",
     "#components/counter2": "./components/counter2.tsx",
@@ -29,6 +30,7 @@
     "#signals/counter": "./signals/counter.ts",
     "#template-button": "./templates/template-button.tsx",
     "#template-counter": "./templates/template-counter.tsx",
+    "@std/http": "jsr:@std/http@^1.0.20",
     "eszip": "https://deno.land/x/eszip@v0.99.0/mod.ts",
     "preact-render-to-string": "npm:preact-render-to-string",
     "preact-custom-element": "npm:preact-custom-element",
