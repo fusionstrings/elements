@@ -1,0 +1,22 @@
+export default {
+  "imports": {
+    "@preact/signals": "https://ga.jspm.io/npm:@preact/signals@2.3.1/dist/signals.module.js",
+    "preact": "https://ga.jspm.io/npm:preact@10.27.1/dist/preact.module.js",
+    "preact-custom-element": "https://ga.jspm.io/npm:preact-custom-element@4.5.0/dist/preact-custom-element.esm.js",
+    "preact/jsx-runtime": "https://ga.jspm.io/npm:preact@10.27.1/jsx-runtime/dist/jsxRuntime.module.js"
+  },
+  "scopes": {
+    "https://ga.jspm.io/": {
+      "@preact/signals-core": "https://ga.jspm.io/npm:@preact/signals-core@1.12.1/dist/signals-core.module.js",
+      "preact/hooks": "https://ga.jspm.io/npm:preact@10.27.1/hooks/dist/hooks.module.js"
+    }
+  },
+  "integrity": {
+    "https://ga.jspm.io/npm:@preact/signals-core@1.12.1/dist/signals-core.module.js": "sha384-9UFMm/WSztUU3wlFfrAWXQRwGznZ6Sn239sBI9J3KcPVwwrb9cbpZPZcdXhdh8oF",
+    "https://ga.jspm.io/npm:@preact/signals@2.3.1/dist/signals.module.js": "sha384-bKb3ydc1F5AvMqFrwbazxvT3YNO2h1Q7kNfLm20CZbBr7gDrkGW7Zhu+GCeGSHeP",
+    "https://ga.jspm.io/npm:preact-custom-element@4.5.0/dist/preact-custom-element.esm.js": "sha384-O6WmKNiOz37uUp/Ql0708GGp78j5smJjmHKP/4RFlZ4xzhM7pU7pmXzxICRsbuSB",
+    "https://ga.jspm.io/npm:preact@10.27.1/dist/preact.module.js": "sha384-uED1sqA0mUE6gU4PPIYC9u8poFC1jwGs2hy9sNpaq6tMVMbu2jD6z6E21qmaZ7nS",
+    "https://ga.jspm.io/npm:preact@10.27.1/hooks/dist/hooks.module.js": "sha384-Yuoj3LKvItbLrh7UD0HpgPwNIApy0SSur+BFGX+kR4SrbA75NHsX6NkmxYtBFV+P",
+    "https://ga.jspm.io/npm:preact@10.27.1/jsx-runtime/dist/jsxRuntime.module.js": "sha384-7/qpgtXqILUTaZFfdAW8wL2mRFPf4d+G5LoVgUhpHlje71DUgR7W9+vKq4UaeY9D"
+  }
+};

@@ -1,0 +1,1 @@
+{"version":3,"file":"template-button.d.ts","sourceRoot":"","sources":["../../src/templates/template-button.tsx"],"names":[],"mappings":"AAEA,iBAAS,cAAc,CACrB,EAAE,cAAc,EAAE,EAAE,EAAE,sBAAsB,EAAE,EAAE;IAAE,cAAc,CAAC,EAAE,MAAM,GAAG,QAAQ,CAAC;IAAC,EAAE,CAAC,EAAE,MAAM,CAAC;IAAC,sBAAsB,CAAC,EAAE,OAAO,CAAA;CAAE,gCAQtI;AAED,OAAO,EAAE,cAAc,EAAE,CAAC"}
