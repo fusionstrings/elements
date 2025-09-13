@@ -1,11 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elements &ndash; Standard Web Components</title>
-</head>
-<body>
+
+    <template id="template-counter">
+      <style>
+        div {
+          font-family:
+            "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        }
+      </style>
+      <div>
+        <slot></slot>
+      </div>
+    </template>
+
+    <template id="template-button">
+      <style>
+        button {
+          background-color: #4caf50; /* Green */
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+      </style>
+      <button type="button">
+        <slot></slot>
+      </button>
+    </template>
+
+    <script type="module">
+      const createSignal = (value) => {
+        const subscribers = new Set();
+        const signal = {
+          get value() {
+            return value;
+          },
+          set value(newValue) {
+            value = newValue;
+            for (const subscriber of subscribers) {
+              subscriber(value);
+            }
+          },
+          subscribe(subscriber) {
+            subscribers.add(subscriber);
+            return () => subscribers.delete(subscriber);
+          },
+        };
+        return signal;
+      };
+
+      const count = createSignal(0);
+
+      class Counter extends HTMLElement {
+        shadow = null;
+        internals;
+        counterPlaceholder = null;
+        disposeEffect;
+        constructor() {
+          super();
+          if ("attachInternals" in this) {
+            this.internals = this.attachInternals();
+          }
+        }
+        connectedCallback() {
+          this.shadow = this.internals?.shadowRoot || this.shadowRoot;
+          if (!this.shadow) {
+            this.shadow = this.attachShadow({
+              mode: "open",
+            });
+            const template = document.getElementById(
+              "template-counter",
+            );
+            if (template) {
+              this.shadow.appendChild(template.content.cloneNode(true));
+            }
+          }
+          this.counterPlaceholder = this.shadow?.querySelector("div");
+          if (this.counterPlaceholder) {
+            // Store disposer to clean up effect on disconnect
+            this.disposeEffect = count.subscribe((value) => {
+              this.counterPlaceholder.textContent = `${value}`;
+            });
+          }
+        }
+        disconnectedCallback() {
+          if (this.disposeEffect) {
+            this.disposeEffect();
+            this.disposeEffect = undefined;
+          }
+        }
+      }
+
+      class Button extends HTMLElement {
+        shadow = null;
+        internals;
+        buttonEl = null;
+        handleClick = () => {
+          count.value++;
+        };
+        constructor() {
+          super();
+          if ("attachInternals" in this) {
+            this.internals = this.attachInternals();
+          }
+        }
+        connectedCallback() {
+          this.shadow = this.internals?.shadowRoot || this.shadowRoot;
+          if (!this.shadow) {
+            this.shadow = this.attachShadow({
+              mode: "open",
+            });
+            const template = document.getElementById("template-button");
+            if (template) {
+              this.shadow.appendChild(template.content.cloneNode(true));
+            }
+          }
+          // Attach event listener
+          this.buttonEl = this.shadow?.querySelector("button");
+          if (this.buttonEl) {
+            this.buttonEl.addEventListener("click", this.handleClick);
+          }
+        }
+        disconnectedCallback() {
+          if (this.buttonEl) {
+            this.buttonEl.removeEventListener(
+              "click",
+              this.handleClick,
+            );
+          }
+        }
+      }
+      customElements.define("element-counter", Counter);
+      customElements.define("element-button", Button);
+    </script>
+  </head>
+  <body>
     <h1>Standard Web Components</h1>
     <nav>
       <ul>
@@ -22,5 +160,5 @@
         <element-counter>0</element-counter>
       </section>
     </main>
-</body>
+  </body>
 </html>
