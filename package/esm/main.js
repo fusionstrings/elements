@@ -33,6 +33,10 @@ const routes = [
         file: "package/esm/components/counter2.js",
     },
     {
+        pattern: new URLPattern({ pathname: "/esm/dom/button2.css" }),
+        file: "package/esm/dom/button2.css",
+    },
+    {
         pattern: new URLPattern({ pathname: "/esm/dom/counter2.css" }),
         file: "package/esm/dom/counter2.css",
     },

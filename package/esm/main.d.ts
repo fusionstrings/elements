@@ -5,7 +5,9 @@ declare module 'preact/jsx-runtime' {
             'element-button': HTMLAttributes<HTMLElement>;
             'dsd-counter-preact': HTMLAttributes<HTMLElement>;
             'dsd-button-preact': HTMLAttributes<HTMLElement>;
-            'element-button2': HTMLAttributes<HTMLElement>;
+            'element-button2': HTMLAttributes<HTMLElement> & {
+                hydrate?: boolean;
+            };
             'element-counter2': HTMLAttributes<HTMLElement>;
         }
     }

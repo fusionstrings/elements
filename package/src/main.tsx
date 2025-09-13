@@ -10,7 +10,7 @@ declare module 'preact/jsx-runtime' {
       'element-button': HTMLAttributes<HTMLElement>;
       'dsd-counter-preact': HTMLAttributes<HTMLElement>;
       'dsd-button-preact': HTMLAttributes<HTMLElement>;
-      'element-button2': HTMLAttributes<HTMLElement>;
+      'element-button2': HTMLAttributes<HTMLElement> & { hydrate?: boolean };
       'element-counter2': HTMLAttributes<HTMLElement>;
     }
   }
@@ -44,6 +44,10 @@ const routes = [
   {
     pattern: new URLPattern({ pathname: "/esm/components/counter2.js" }),
     file: "package/esm/components/counter2.js",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/esm/dom/button2.css" }),
+    file: "package/esm/dom/button2.css",
   },
   {
     pattern: new URLPattern({ pathname: "/esm/dom/counter2.css" }),

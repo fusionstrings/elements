@@ -6,6 +6,7 @@ import { Button } from "#button";
 import { count } from "#signals/counter";
 import { DSDCounter } from "#components/dsd-counter";
 import { DSDButton } from "#components/dsd-button";
+import { Button2 } from "#components/button2";
 
 function Home() {
     return (
@@ -73,7 +74,18 @@ function Home() {
                     <section>
                         <h2>Preact register</h2>
                         <element-counter2>{count}</element-counter2>
-                        <element-button2>Count</element-button2>
+                        <element-button2 hydrate>
+                            <template shadowrootmode="open">
+                                <Button2><slot></slot></Button2>
+                            </template>
+                            Count 2
+                        </element-button2>
+                        <element-button2 hydrate>
+                            Count 3
+                        </element-button2>
+                        <element-button2>
+                            Count 4
+                        </element-button2>
                     </section>
                 </main>
             </body>

@@ -8,9 +8,12 @@ function Button2(
   },
 ) {
   return (
-    <button type="button" onClick={onClick}>
-      {children}
-    </button>
+    <>
+      <link rel="stylesheet" href="/esm/dom/button2.css" />
+      <button type="button" onClick={onClick}>
+        {children}
+      </button>
+    </>
   );
 }
 
