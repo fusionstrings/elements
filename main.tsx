@@ -1,9 +1,17 @@
 /** @jsxImportSource preact */
 import { renderToReadableStream } from "preact-render-to-string/stream";
 import { serveFile } from "@std/http/file-server";
-import { Home } from "#home";
+import { Document } from "#document";
 
 const routes = [
+  {
+    pattern: new URLPattern({ pathname: "/" }),
+    file: "index.html",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/standard-web-components" }),
+    file: "standard-web-components.html",
+  },
   {
     pattern: new URLPattern({ pathname: "/favicon.ico" }),
     file: "images/favicon/favicon.ico",
@@ -21,17 +29,13 @@ const routes = [
     file: "images/favicon/site.webmanifest",
   },
   {
-    pattern: new URLPattern({ pathname: "/standard-web-components" }),
-    file: "standard-web-components.html",
-  },
-  {
     pattern: new URLPattern({ pathname: "/esm/dom/main.js" }),
     file: "package/esm/dom/main.js",
   },
 ];
 
-function documentHome(): ReadableStream<Uint8Array> {
-  const stream = renderToReadableStream(<Home />);
+function document(): ReadableStream<Uint8Array> {
+  const stream = renderToReadableStream(<Document />);
   const encoder = new TextEncoder();
   
   return stream.pipeThrough(new TransformStream({
@@ -51,7 +55,7 @@ export default {
       }
     }
 
-    const stream = documentHome();
+    const stream = document();
     return new Response(stream, {
       headers: {
         "content-type": "text/html;charset=UTF-8",
@@ -60,4 +64,4 @@ export default {
   },
 };
 
-export { documentHome }
+export { document as documentHome }

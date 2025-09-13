@@ -25,7 +25,7 @@
     "#elements/button": "./elements/button.ts",
     "#elements/counter-preact": "./elements/counter-preact.tsx",
     "#elements/counter": "./elements/counter.ts",
-    "#home": "./components/home.tsx",
+    "#document": "./components/document.tsx",
     "#wrangler-config": "./functions/wrangler.ts",
     "#signals/counter": "./signals/counter.ts",
     "#template-button": "./templates/template-button.tsx",

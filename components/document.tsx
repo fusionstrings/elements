@@ -1,6 +1,6 @@
 /** @jsxImportSource preact */
 
-function Home() {
+function Document() {
     return (
         <html lang="en">
             <head>
@@ -32,4 +32,4 @@ function Home() {
     )
 }
 
-export { Home }
+export { Document }
