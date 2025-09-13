@@ -21,6 +21,10 @@ const routes = [
     file: "images/favicon/site.webmanifest",
   },
   {
+    pattern: new URLPattern({ pathname: "/standard-web-components" }),
+    file: "standard-web-components.html",
+  },
+  {
     pattern: new URLPattern({ pathname: "/esm/dom/main.js" }),
     file: "package/esm/dom/main.js",
   },
