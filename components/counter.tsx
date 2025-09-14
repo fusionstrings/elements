@@ -1,10 +1,14 @@
 /** @jsxImportSource preact */
 import { count } from "#signals/counter";
+
 function Counter() {
   return (
-    <div>
-      {count}
-    </div>
+    <>
+      <link rel="stylesheet" href="/components/counter.css" />
+      <div>
+        {count}
+      </div>
+    </>
   );
 }
 

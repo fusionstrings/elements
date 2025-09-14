@@ -14,9 +14,7 @@
   "dependencies": {
     "@preact/signals": "*",
     "preact": "*",
-    "preact-custom-element": "*",
-    "preact-render-to-string": "*",
-    "@deno/shim-deno": "~0.18.0"
+    "preact-custom-element": "*"
   },
   "devDependencies": {
     "@types/node": "^20.9.0"

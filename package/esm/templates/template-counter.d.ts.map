@@ -1,1 +1,0 @@
-{"version":3,"file":"template-counter.d.ts","sourceRoot":"","sources":["../../src/templates/template-counter.tsx"],"names":[],"mappings":"AAEA,iBAAS,eAAe,CACtB,EAAE,cAAc,EAAE,EAAE,EAAE,sBAAsB,EAAE,EAAE;IAAE,cAAc,CAAC,EAAE,MAAM,GAAG,QAAQ,CAAC;IAAC,EAAE,CAAC,EAAE,MAAM,CAAC;IAAC,sBAAsB,CAAC,EAAE,OAAO,CAAA;CAAE,gCAQtI;AAED,OAAO,EAAE,eAAe,EAAE,CAAC"}

@@ -1,8 +1,8 @@
 /** @jsxImportSource preact */
-import type { JSX } from "preact";
+import type { ComponentChildren } from "preact";
 declare function Button({ onClick, children }: {
-    onClick?: JSX.MouseEventHandler<HTMLButtonElement> | undefined;
-    children?: JSX.Element | string;
-}): JSX.Element;
+    onClick?: (event: MouseEvent) => void;
+    children?: ComponentChildren;
+}): import("preact").JSX.Element;
 export { Button };
 //# sourceMappingURL=button.d.ts.map
