@@ -5,7 +5,7 @@
     "dev": "deno serve --allow-read --watch main.tsx",
     "serve": "deno serve --allow-read main.tsx",
     "build": "deno run -A functions/dnt.ts",
-    "bundle": "deno run -A functions/deno-bundle.ts",
+    "bundle": "deno run -A --unstable-bundle functions/deno-bundle.ts",
     "ssg": "deno run --allow-read --allow-write --allow-env --allow-net functions/ssg.ts"
   },
   "exports": {
