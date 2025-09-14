@@ -1,7 +1,7 @@
 /** @jsxImportSource preact */
 
-import { Button } from "#components/button";
-import { Counter } from "#components/counter";
+import { Button } from "./button.js";
+import { Counter } from "./counter.js";
 
 function Document() {
     return (

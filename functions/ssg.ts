@@ -1,8 +1,9 @@
 //import { Generator } from "npm:@jspm/generator";
-import { documentHome } from "../main.tsx";
+import { document } from "../main.tsx";
 
-async function ssgHome() {
-    const document = await documentHome();
+async function ssgDocument() {
+    const documentStream = document();
+    const documentText = await new Response(documentStream).text();
 
     // const root = new URL("../package", import.meta.url)
     // console.log(root);
@@ -11,7 +12,7 @@ async function ssgHome() {
     //     mapUrl: root,
     //     env: ['production', 'module', 'browser'],
     // });
-    // const documentWithImportmap = await generator.htmlInject(document, {
+    // const documentWithImportmap = await generator.htmlInject(documentText, {
     //     trace: true,
     //     esModuleShims: true,
     //     preload: true,
@@ -21,14 +22,14 @@ async function ssgHome() {
     // })
     //console.log(documentWithImportmap);
 
-    // await generator.link(document);
+    // await generator.link(documentText);
     // console.log(JSON.stringify(generator.getMap(), null, 2));
-    await Deno.writeTextFile("package/index.html", document);
+    await Deno.writeTextFile("package/index.html", documentText);
 }
 
-export { ssgHome }
+export { ssgDocument }
 
 if (import.meta.main) {
-    await ssgHome();
+    await ssgDocument();
     console.log("package/index.html generated");
 }

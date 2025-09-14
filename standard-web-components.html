@@ -148,17 +148,67 @@
     <nav>
       <ul>
         <li><a href="/">Home</a></li>
+        <li><a href="/preact-web-components">Preact Web Components</a></li>
       </ul>
     </nav>
     <main>
-      <section>
-        <h2>Button Element</h2>
-        <element-button>Click Me !</element-button>
-      </section>
-      <section>
-        <h2>Counter Element</h2>
-        <element-counter>0</element-counter>
-      </section>
+      <form onsubmit="return false;">
+        <fieldset>
+          <legend>Counter Form</legend>
+          <p>
+            Current count: <element-counter>0</element-counter>
+          </p>
+          <element-button>Increment</element-button>
+        </fieldset>
+      </form>
     </main>
+
+    <footer>
+      <h2>References</h2>
+      <ul>
+        <li>
+          <a
+            href="https://html.spec.whatwg.org/multipage/scripting.html#attr-template-shadowrootmode"
+          >Declarative Shadow DOM Specs</a>
+        </li>
+        <li>
+          <a href="https://web.dev/articles/declarative-shadow-dom"
+          >Declarative Shadow DOM by Jason Miller and Mason Freed</a>
+        </li>
+        <li>
+          <a href="https://jakelazaroff.com/words/isomorphic-web-components/"
+          >Isomorphic Web Components by Jake Lazaroff</a>
+        </li>
+        <li>
+          <a href="https://github.com/mayank99/declarative-shadow-dom"
+          >Utility to get Declarative Shadow Dom work in JSX</a>
+        </li>
+        <li>
+          <a
+            href="https://www.konnorrogers.com/posts/2023/what-is-declarative-shadow-dom"
+          >What is DSD</a>
+        </li>
+        <li>
+          <a href="https://12daysofweb.dev/2024/declarative-shadow-dom/">DSD</a>
+        </li>
+        <li>
+          <a href="https://fullystacked.net/declarative-shadow-dom/"
+          >Declarative Shadow DOM and issue in React</a>
+        </li>
+        <li>
+          <a
+            href="https://blog.stackademic.com/server-rendering-web-components-in-react-869c248f1df7"
+          >Declarative Shadow DOM and issue in SSR</a>
+        </li>
+        <li>
+          <a href="https://fullystacked.net/innerhtml-alternatives/"
+          >Some useful modern browser APIs for Web components</a>
+        </li>
+        <li>
+          <a href="https://github.com/solidjs/solid/issues/1834"
+          >Solid JS DSD issue</a>
+        </li>
+      </ul>
+    </footer>
   </body>
 </html>

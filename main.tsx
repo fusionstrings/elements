@@ -29,8 +29,16 @@ const routes = [
     file: "images/favicon/site.webmanifest",
   },
   {
-    pattern: new URLPattern({ pathname: "/esm/dom/main.js" }),
-    file: "package/esm/dom/main.js",
+    pattern: new URLPattern({ pathname: "/dom/main.js" }),
+    file: "build/main.js",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/components/button.css" }),
+    file: "components/button.css",
+  },
+  {
+    pattern: new URLPattern({ pathname: "/components/counter.css" }),
+    file: "components/counter.css",
   },
 ];
 
@@ -64,4 +72,4 @@ export default {
   },
 };
 
-export { document as documentHome }
+export { document }

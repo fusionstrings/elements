@@ -1,4 +1,4 @@
-element-counter2 {
+div {
   display: block;
   font-family: system-ui, sans-serif;
   border: 2px solid #ccc;
@@ -7,4 +7,5 @@ element-counter2 {
   margin: 16px 0;
   text-align: center;
   background-color: #f9f9f9;
+  font-size: xx-large;
 }
