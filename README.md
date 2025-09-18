@@ -10,6 +10,10 @@ This project demonstrates the use of Declarative Shadow DOM (DSD) with Preact, s
 - **Server-Side Rendering**: Renders HTML on the server using `preact-render-to-string`.
 - **Build Pipeline**: Supports bundling and packaging with tools like `esbuild` and `@deno/dnt`.
 
+## Documentation
+
+For detailed documentation, please visit the [docs section](./docs/index.md).
+
 ## Project Structure
 
 ```
