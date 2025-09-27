@@ -24,6 +24,7 @@
     "#signals/counter": "./signals/counter.ts",
     "@std/http": "jsr:@std/http@^1.0.20",
     "eszip": "https://deno.land/x/eszip@v0.99.0/mod.ts",
+    "happy-dom": "npm:happy-dom@^18.0.1",
     "preact-render-to-string": "npm:preact-render-to-string",
     "preact-custom-element": "npm:preact-custom-element",
     "preact": "npm:preact",

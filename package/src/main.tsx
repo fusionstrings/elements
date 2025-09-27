@@ -30,7 +30,7 @@ const routes = [
   },
   {
     pattern: new URLPattern({ pathname: "/dom/main.js" }),
-    file: "bundle/main.js",
+    file: "build/main.js",
   },
   {
     pattern: new URLPattern({ pathname: "/components/button.css" }),

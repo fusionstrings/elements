@@ -1,7 +1,6 @@
 /** @jsxImportSource preact */
 import type { ComponentChildren } from "preact";
-declare function Button({ onClick, children }: {
-    onClick?: (event: MouseEvent) => void;
+declare function Button({ children }: {
     children?: ComponentChildren;
 }): import("preact").JSX.Element;
 export { Button };

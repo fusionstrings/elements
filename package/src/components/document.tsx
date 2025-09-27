@@ -36,11 +36,11 @@ function Document() {
                         <fieldset>
                             <legend>Counter Form</legend>
                             <p>
-                                Current count: <element-counter initial-count={0}>
-                                    <template shadowrootmode="open"><Counter /></template>
+                                Current count: <element-counter hydrate>
+                                    <template shadowrootmode="open"><Counter>0</Counter></template>
                                 </element-counter>
                             </p>
-                            <element-button><template shadowrootmode="open"><Button>Increment</Button></template>Add</element-button>
+                            <element-button hydrate><template shadowrootmode="open"><Button>Increment</Button></template>Add</element-button>
                         </fieldset>
                     </form>
                 </main>

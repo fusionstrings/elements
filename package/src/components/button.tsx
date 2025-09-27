@@ -1,16 +1,20 @@
 /** @jsxImportSource preact */
 import type { ComponentChildren } from "preact";
+import { count } from "../signals/counter.js";
 
 function Button(
-  { onClick, children = "Click Me !" }: {
-    onClick?: (event: MouseEvent) => void;
+  { children = "Increment" }: {
     children?: ComponentChildren;
   },
 ) {
+  const handleClick = () => {
+    count.value++;
+  };
+
   return (
     <>
       <link rel="stylesheet" href="/components/button.css" />
-      <button type="button" onClick={onClick}>
+      <button type="button" onClick={handleClick}>
         {children}
       </button>
     </>

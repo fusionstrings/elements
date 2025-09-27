@@ -1,4 +1,4 @@
-import { build, Parser } from 'https://deno.land/x/eszip@v0.84.0/mod.ts';
+import { build, Parser } from 'eszip';
 
 //const importmapURL =
 //	'https://raw.githubusercontent.com/fusionstrings/fusionstrings/refs/heads/creation/deno.json';
@@ -18,8 +18,9 @@ async function main() {
     const sources = new Map<string, string>();
     for (const specifier of specifiers.sort()) {
         sources.set(specifier, await parser.getModuleSource(specifier));
+        console.log(specifier);
     }
     return eszip;
 }
 
-main();
+await main();
