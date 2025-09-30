@@ -1,7 +1,13 @@
 /** @jsxImportSource preact */
 import { count } from "#signals/counter";
+import type { ComponentChildren } from "preact";
 
-function Counter() {
+type CounterProps = {
+  children?: ComponentChildren;
+};
+
+
+function Counter(_: CounterProps) {
   return (
     <>
       <link rel="stylesheet" href="/components/counter.css" />
